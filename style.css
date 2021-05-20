@@ -1,0 +1,24 @@
+#div_clear{
+    display: flex;
+    justify-content: center;
+}
+
+#container{
+    
+
+}
+
+.gridRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.gridRow div{
+    width:20px;
+    height:20px;
+}
+
+.div_cell_hover{
+    background-color: grey;
+}
