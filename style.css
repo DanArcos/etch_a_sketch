@@ -4,7 +4,6 @@
 }
 
 #container{
-    
 
 }
 
@@ -15,8 +14,12 @@
 }
 
 .gridRow div{
-    width:20px;
-    height:20px;
+    
+}
+
+.cellDiv{
+    display: flex;
+    justify-content: center;
 }
 
 .div_cell_hover{
