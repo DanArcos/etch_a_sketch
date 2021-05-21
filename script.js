@@ -31,7 +31,34 @@ function createGrid(side){
     cells.forEach(cell => {
         //console.log(cell);
         cell.addEventListener('mouseover', function(e) {
+        // Update the class so that it will go grey
         cell.classList.add('div_cell_hover')
+
+        //Assign a random color
+        if (e.target.style.backgroundColor==="") {
+            console.log(e.target.style.backgroundColor==="");
+            cell.style.backgroundColor = "#"+Math.floor(Math.random()*16777215).toString(16);
+            
+        }
+        else{
+            console.log(cell.style.backgroundColor);
+            let rgb = getRGB(cell.style.backgroundColor);
+            
+            let r = rgb[0];
+            let g = rgb[1];
+            let b = rgb[2];
+
+            let brightness = Math.sqrt(.241*r*r+.691*g*g+.068*b*b);
+            console.log(brightness/255);
+            
+            let newColor = ColorLuminance(fullColorHex(rgb[0],rgb[1], rgb[2]), -.25);
+            console.log(ColorLuminance(fullColorHex(rgb[0],rgb[1], rgb[2]), -5.0));
+            cell.style.backgroundColor = newColor;
+        }
+        
+        
+        console.log(e.target.style.backgroundColor);
+
         });
     });
 }
@@ -65,4 +92,46 @@ function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
+}
+
+function getRGB(rgb){
+
+    rgb = rgb.replace(/[^\d,]/g, '').split(',');
+
+    return rgb;
+}
+
+function rgbToHex (rgb) { 
+    var hex = Number(rgb).toString(16);
+    if (hex.length < 2) {
+         hex = "0" + hex;
+    }
+    return hex;
+  };
+
+function fullColorHex(r,g,b) {   
+    var red = rgbToHex(r);
+    var green = rgbToHex(g);
+    var blue = rgbToHex(b);
+    return red+green+blue;
+  };
+
+  function ColorLuminance(hex, lum) {
+
+	// validate hex string
+	hex = String(hex).replace(/[^0-9a-f]/gi, '');
+	if (hex.length < 6) {
+		hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+	}
+	lum = lum || 0;
+
+	// convert to decimal and change luminosity
+	var rgb = "#", c, i;
+	for (i = 0; i < 3; i++) {
+		c = parseInt(hex.substr(i*2,2), 16);
+		c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+		rgb += ("00"+c).substr(c.length);
+	}
+
+	return rgb;
 }
