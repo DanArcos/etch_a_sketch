@@ -3,7 +3,7 @@ console.log('Loaded');
 const container = document.querySelector('#container');
 
 let side = 16;
-let total_width = 1000;
+let total_width = 500;
 
 //Create Initial Grid
 function createGrid(side){
@@ -16,7 +16,7 @@ function createGrid(side){
         
         for(let i = 0; i < side; i++){
             const rowDiv = document.createElement('div');
-            rowDiv.innerText = ".";
+            rowDiv.innerText = "";
             rowDiv.className = 'cellDiv'
             rowDiv.style.width = cell_length.toString()+'px';
             rowDiv.style.height = cell_length.toString()+'px';

@@ -1,3 +1,8 @@
+#header {
+    display:flex;
+    justify-content: center;
+}
+
 #div_clear{
     display: flex;
     justify-content: center;
@@ -14,6 +19,7 @@
 }
 
 .gridRow div{
+    border: 1px solid black;
     
 }
 
@@ -24,4 +30,14 @@
 
 .div_cell_hover{
     background-color: grey;
+}
+
+footer{
+    border-top: 1px solid black;
+    position: absolute;
+    bottom: 0px;
+    left:0px;
+    width:100%;
+    display: flex;
+    justify-content: center;
 }
